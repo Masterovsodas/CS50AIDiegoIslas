@@ -9,23 +9,26 @@ int main(void)
     // TODO: Prompt for start size
     long startSize;
     //verify validity
-    do{
-      startSize = get_long("Start size: ");
+    do
+    {
+       startSize = get_long("Start size: ");
     }
-    while(startSize<9);
+    while (startSize<9);
     
     
     // TODO: Prompt for end size
     long endSize = 0;
-     //verify validity
-    do{
+    //verify validity
+    do
+    {
       endSize = get_long("End size: ");
     }
-    while(endSize<startSize);
+    while (endSize<startSize);
     
     // TODO: Calculate number of years until we reach threshold
-    while(startSize < endSize){
-        startSize += (startSize/3) - (startSize / 4);
+    while (startSize < endSize)
+    {
+        startSize += (startSize / 3) - (startSize / 4);
         years++;
     }
     // TODO: Print number of years
