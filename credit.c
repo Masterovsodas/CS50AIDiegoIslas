@@ -54,6 +54,7 @@ int main(void)
             if(strlen(number) == 15 && (number[1] == '4' || number[1] == '7'))
             {
                 printf("AMEX\n");
+                return 0;
             }
         break;
         
@@ -62,6 +63,7 @@ int main(void)
             if((strlen(number) == 13 || strlen(number) == 16))
             {
                 printf("VISA\n");
+                return 0;
             }
         break;
         
@@ -70,12 +72,9 @@ int main(void)
           if(strlen(number) == 16 && number[1] <= '5')
             {
                 printf("MASTERCARD\n");
+                return 0;
             }
         break;
-        
-        
-        default:
-            printf("INVALID\n");
-        break;
     }
+    printf("INVALID\n");
 }
