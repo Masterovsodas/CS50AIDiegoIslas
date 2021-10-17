@@ -25,7 +25,7 @@ int main(void)
             //when less add a space
             if (j < spaces)
             {
-               printf(" ");
+                printf(" ");
             }
             //when more add tags
             else
@@ -39,7 +39,7 @@ int main(void)
         //reverse string and make side2 euqal that
         for (int j = 0; j < i; j++)
         {
-         printf("#");
+            printf("#");
         }
         printf("\n");
     }
