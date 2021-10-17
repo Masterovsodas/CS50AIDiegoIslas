@@ -6,6 +6,7 @@ int main(void)
 {
     //essential vars
     int height = 0;
+    
     //verify validity
     do
     {
@@ -17,8 +18,8 @@ int main(void)
     for(int i = 1; i <= height; i++)
     {
         //okay so cs50.h has  built in string which does jack, so we ave to use c strings, very stupid char arrays
-        char side1[8];
-        char side2[8];
+        char side1[100];
+        char side2[100];
         int spaces = height - i;
         
         //get necessary characters based on data we have; until i > spaces, print only spaces, after get #; this will give the right side of the pyramid always.
@@ -34,18 +35,16 @@ int main(void)
                 side1[j] = '#';
             }
         }
-        
+       // printf("side1: %s\n", side1);
         //reverse string and make side2 euqal that
        for(int j = 0; j < height; j++)
        {
-           if(side1[(height - 1) - j] == ' ')
+           if(side1[(height - 1) - j] == '#')
            {
-               continue;;
+               side2[j] = side1[(height - 1) - j];
            }
-           side2[j] = side1[(height - 1) - j];
        }
         
         printf("%s  %s\n", side1, side2);
-       
     }
 }
