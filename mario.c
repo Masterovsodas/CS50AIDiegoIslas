@@ -11,7 +11,7 @@ int main(void)
     {
         height = get_int("Height: ");
     }
-    while(height > 0 || height > 8);
+    while(height <= 0 || height > 8);
 
     ///build pyramids
     for(int i = 1; i <= height; i++)
@@ -40,7 +40,7 @@ int main(void)
        {
            if(side1[(height - 1) - j] == ' ')
            {
-               continue
+               continue;;
            }
            side2[j] = side1[(height - 1) - j];
        }
