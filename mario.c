@@ -18,8 +18,8 @@ int main(void)
     for(int i = 1; i <= height; i++)
     {
         //okay so cs50.h has  built in string which does jack, so we ave to use c strings, very stupid char arrays
-        char side1[100];
-        char side2[100];
+        char side1[10];
+        char side2[10];
         int spaces = height - i;
         
         //get necessary characters based on data we have; until i > spaces, print only spaces, after get #; this will give the right side of the pyramid always.
