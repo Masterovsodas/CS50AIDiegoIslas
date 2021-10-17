@@ -11,10 +11,10 @@ int main(void)
     long sumMults = 0;
     
     //multiply
-    for(int i = 1; i <= strlen(number); i++)
+    for (int i = 1; i <= strlen(number); i++)
     {
         //check if character is one of every other
-        if(i % 2 == 0)
+        if (i % 2 == 0)
         {
             int thisChar = number[strlen(number) - i] - '0';
             thisChar *= 2;
@@ -24,7 +24,7 @@ int main(void)
             sprintf(digis, "%d", thisChar); 
 
             //add individual digits
-            for(int j =0; j < strlen(digis); j++)
+            for (int j = 0; j < strlen(digis); j++)
             {
                 int currentDigi = digis[j] - '0';
                 sumMults += currentDigi;
@@ -39,7 +39,7 @@ int main(void)
    
     
     //check if number is valid
-    if((sumMults + sumDigs) % 10 != 0)
+    if ((sumMults + sumDigs) % 10 != 0)
     {
         printf("INVALID\n");
         return 0;
@@ -47,34 +47,34 @@ int main(void)
     
     
     //if valid verify distributor
-    switch(number[0])
+    switch (number[0])
     {
         //if possibly amex
         case '3':
-            if(strlen(number) == 15 && (number[1] == '4' || number[1] == '7'))
+            if (strlen(number) == 15 && (number[1] == '4' || number[1] == '7'))
             {
                 printf("AMEX\n");
                 return 0;
             }
-        break;
+            break;
         
         //check VISA
         case '4':
-            if((strlen(number) == 13 || strlen(number) == 16))
+            if ((strlen(number) == 13 || strlen(number) == 16))
             {
                 printf("VISA\n");
                 return 0;
             }
-        break;
+            break;
         
         //check mastercard
         case '5':
-          if(strlen(number) == 16 && number[1] <= '5')
+            if (strlen(number) == 16 && number[1] <= '5')
             {
                 printf("MASTERCARD\n");
                 return 0;
             }
-        break;
+            break;
     }
     printf("INVALID\n");
 }
