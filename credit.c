@@ -41,7 +41,7 @@ int main(void)
     //check if number is valid
     if((sumMults + sumDigs) % 10 != 0)
     {
-        printf("INVALID1\n");
+        printf("INVALID\n");
         return 0;
     }
     
