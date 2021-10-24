@@ -50,17 +50,16 @@ int main(void)
     
     
     //check limits (lower than g 1; about g 16)
-    if(grade >= 16)
+    if (grade >= 16)
     {
-        printf("Grade 16+");
+        printf("Grade 16+\n");
         return 0;
     }
-    else if(grade < 1)
+    else if (grade < 1)
     {
-        printf("Before Grade 1");
+        printf("Before Grade 1\n");
         return 0;
     }
     
     printf("Grade %i\n", (int) grade);
-    
 }
