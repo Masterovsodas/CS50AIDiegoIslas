@@ -22,11 +22,11 @@ int main(void)
     int score2 = compute_score(word2);
 
     // TODO: Print the winner
-    if(score1 > score2)
+    if (score1 > score2)
     {
         printf("Player 1 wins!\n");
     }
-    else if(score2 > score1)
+    else if (score2 > score1)
     {
         printf("Player 2 wins!\n");
     }
@@ -40,17 +40,17 @@ int compute_score(string word)
 {
     int score = 0;
     // TODO: Compute and return score for string
-        //strlen gives length until \0 char so no need to worry about identifying it
-    for(int i = 0, n = strlen(word); i < n; i++)
+    //strlen gives length until \0 char so no need to worry about identifying it
+    for (int i = 0, n = strlen(word); i < n; i++)
     {
         //make to lower case since capitals and lowers = same
         char thisChar = tolower(word[i]);
         int index = -1;
         
         //loop through alphabet to find last occurence of char if any
-        for(int j =0, o = strlen(alphabet); j < o; j++)
+        for (int j = 0, o = strlen(alphabet); j < o; j++)
         {
-            if(thisChar == alphabet[j])
+            if (thisChar == alphabet[j])
             {
                 //add score and break
                 score += POINTS[j];
