@@ -34,15 +34,10 @@ int main(void)
     //last word is not counted since space is absent at the end, add one extra
     words++;
     
-    
-    //printf("Letters: %f ; Sentences %f ; Words %f\n", letters, sentences, words);
     //get averages
     //how many times does 100 divide into the word count? What do we need to multiply teh word count and therefore the numerator (letters) to get a denominator of 100
     float lettersPerWordsMultiplier = letters * (100.0 / words);
     float sentencesPerWordsMultiplier = sentences * (100.0 / words);
-    //printf("Letters / words avg: %f ; Sentences per words avg: %f\n",lettersPerWordsMultiplier, sentencesPerWordsMultiplier);
-    
-    
     
     //get level
     float grade =  0.0588 * lettersPerWordsMultiplier - 0.296 * sentencesPerWordsMultiplier - 15.8;
