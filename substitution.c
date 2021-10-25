@@ -74,9 +74,9 @@ int main(int argc, string arga[])
         }
         else if(isupper(thisChar))
         {
-          //quick method to find last index of a char in a string, idk why subtracting the alphabet string form the pointer returns the index but it do
-            char* alphIndex = strchr(alphabet, thisChar);
-            
+            //quick method to find last index of a char in a string, idk why subtracting the alphabet string form the pointer returns the index but it do.
+            //in this case make thisCahr to lower since alphabet is all lowercase
+            char* alphIndex = strchr(alphabet, tolower(thisChar));
             //add char
             printf("%c", toupper(arga[1][alphIndex - alphabet]));
         }
