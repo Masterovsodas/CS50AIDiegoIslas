@@ -58,7 +58,7 @@ int main(int argc, string arga[])
     
     
     //start output line
-    printf("\nciphertext: ");
+    printf("ciphertext: ");
     for (int i = 0, n = strlen(plainText); i < n; i++)
     {
         char thisChar = plainText[i];
