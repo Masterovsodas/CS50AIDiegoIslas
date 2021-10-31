@@ -1,11 +1,12 @@
-sort1 uses: Selection Sort
+sort1 uses: Bubble Sort
 
-How do you know?: POP
+How do you know?: Consistently the slowest algorithm, especially in when sorting item heavy arrays. However when sorting a presorted array, it is consistently the fastest; this hints at the fact that sort1 has a condition top quit when an array 
+is already sorted. Bubble sort is the only algorithm that behaves so slowly, yet has an efficient lower bound.
 
 sort2 uses: Merge Sort
 
 How do you know?: SNAP
 
-sort3 uses: Bubble Sort
+sort3 uses: Selection
 
 How do you know?: KRAK
