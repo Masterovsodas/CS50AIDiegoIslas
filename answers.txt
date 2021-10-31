@@ -1,0 +1,11 @@
+sort1 uses: Selection Sort
+
+How do you know?: POP
+
+sort2 uses: Merge Sort
+
+How do you know?: SNAP
+
+sort3 uses: Bubble Sort
+
+How do you know?: KRAK
