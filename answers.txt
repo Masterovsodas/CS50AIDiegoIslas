@@ -1,0 +1,11 @@
+sort1 uses: Selection Sort
+
+How do you know?: TODO
+
+sort2 uses: Bubble Sort
+
+How do you know?: TODO
+
+sort3 uses: Merge Sort
+
+How do you know?: TODO
