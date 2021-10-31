@@ -5,8 +5,9 @@ is already sorted. Bubble sort is the only algorithm that behaves so slowly, yet
 
 sort2 uses: Merge Sort
 
-How do you know?: SNAP
+How do you know?: The most consistent algorithm, usually faster than the others and always faster than sort3 (sort3 has a consistent theta notation of n^2). The only time it fails to win the race is when sort1 is in its ideal conditions and
+its lower bound is expressed in it's time performance.
 
 sort3 uses: Selection
 
-How do you know?: KRAK
+How do you know?: The most consistently slow algorithm, with no efficiency condition.
