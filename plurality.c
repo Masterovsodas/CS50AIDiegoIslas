@@ -42,7 +42,7 @@ int main(int argc, string argv[])
         return 2;
     }
     
-     // Populate array of candidates
+    // Populate array of candidates
     for (int i = 0; i < candidate_count; i++)
     {
         //i + 1; because once again the ./ command is processed as an arg
@@ -72,10 +72,10 @@ int main(int argc, string argv[])
 bool vote(string name)
 {
     //for number of candids
-    for(int i = 0, n = candidate_count; i < n; i++)
+    for (int i = 0, n = candidate_count; i < n; i++)
     {
         //checks where both strngs are placed on alphabet, if 0 they are in the same alphabetical position and so equal
-        if(strcmp(candidates[i].name, name) == 0)
+        if (strcmp(candidates[i].name, name) == 0)
         {
             candidates[i].votes++;
             return true;
@@ -92,9 +92,9 @@ void print_winner(void)
     int namesInArray = 0;
     int placeIndex = 0;
     
-    for(int i = 0, n = candidate_count; i < n; i++)
+    for (int i = 0, n = candidate_count; i < n; i++)
     {
-        if(candidates[i].votes > currentHighest)
+        if (candidates[i].votes > currentHighest)
         {
             currentHighest = candidates[i].votes;
             memset(names, 0, sizeof names);
@@ -102,7 +102,7 @@ void print_winner(void)
             placeIndex = 1;
             namesInArray = 1;
         }
-        else if(candidates[i].votes == currentHighest)
+        else if (candidates[i].votes == currentHighest)
         {
             names[placeIndex] = candidates[i].name;
             placeIndex++;
@@ -111,7 +111,7 @@ void print_winner(void)
     }
     
     //to prevent segfaults when empty strings are inserted, only runf or the amount of names in teh array
-    for(int i = 0; i < namesInArray; i++)
+    for (int i = 0; i < namesInArray; i++)
     {
         printf("%s\n", names[i]);
         
