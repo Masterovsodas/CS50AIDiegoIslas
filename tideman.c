@@ -135,7 +135,7 @@ void record_preferences(int ranks[])
     for (int i = 0; i < candidate_count; i++)
     {
         //array is sorted so increase starting index procedurally, as people wont prefer a deeper value than one closer to index 0
-        for(int j = i + 1; j < candidate_count; j++)
+        for (int j = i + 1; j < candidate_count; j++)
         {
             //preferences for candidate at string index (ranks[i]; an index pointing to a candidate name in the array) vs candidate at string index (ranks[j]; an index pointing to a candidate name in the array; loops for all values past I)
             preferences[ranks[i]][ranks[j]]++;
@@ -172,7 +172,7 @@ void add_pairs(void)
                 pairs[pair_count].loser = i;
                 pair_count++;
 
-               // printf("For %i and %i...%i is the winner dood!!! the marign was %i - %i\n", i, j, j, preferences[j][i], preferences[i][j]);
+                // printf("For %i and %i...%i is the winner dood!!! the marign was %i - %i\n", i, j, j, preferences[j][i], preferences[i][j]);
             }
         }
     }
@@ -230,7 +230,7 @@ void sort_pairs(void)
 }
 
 
-bool HasCycle (int ThisWinner, int loser)
+bool HasCycle(int ThisWinner, int loser)
 {
 
     //if an element above in the locked graph is named the loser, a cycle is made; loser is immutable
@@ -243,14 +243,14 @@ bool HasCycle (int ThisWinner, int loser)
     for (int i = 0; i < candidate_count; i++)
     {
         //if current winner is pointed to by someone else
-       if (locked[i][ThisWinner] == true)
-       {
-           //check if winner has cycle
-          if(HasCycle(i, loser))
-          {
-              return true;
-          }
-       }
+        if (locked[i][ThisWinner] == true)
+        {
+            //check if winner has cycle
+            if (HasCycle(i, loser))
+            {
+                return true;
+            }
+        }
     }
     //if the function makes it this far, obviously no cycle is present
     return false;
@@ -263,10 +263,10 @@ void lock_pairs(void)
 {
     for (int i = 0; i < pair_count; i++)
     {
-       if (!HasCycle(pairs[i].winner, pairs[i].loser))
-       {
-           locked[pairs[i].winner][pairs[i].loser] = true;
-       }
+        if (!HasCycle(pairs[i].winner, pairs[i].loser))
+        {
+            locked[pairs[i].winner][pairs[i].loser] = true;
+        }
     }
     return;
 }
@@ -286,7 +286,8 @@ void print_winner(void)
             }
         }
 
-        if (columnFalse == true){
+        if (columnFalse == true)
+        {
             printf("%s\n", candidates[i]);
         }
     }
