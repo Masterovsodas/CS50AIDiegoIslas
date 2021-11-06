@@ -255,11 +255,7 @@ bool HasCycle (int ThisWinner, int loser)
        }
     }
 
-    //if the highest part of a certain strip of candidates has no locked superior, and the previous if statement is never procced, no cycle exists
-    if (winnerConnected == false)
-    {
-        return false;
-    }
+   
     return false;
 }
 
