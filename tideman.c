@@ -239,11 +239,10 @@ bool HasCycle (int ThisWinner, int loser)
         return true;
     }
 
-
-    bool winnerConnected = false;
     //check if current winner is connected to a candidate in the diagram, then do the same for it
     for (int i = 0; i < candidate_count; i++)
     {
+        //if current winner is pointed to by someone else
        if (locked[i][ThisWinner] == true)
        {
            //check if winner has cycle
@@ -251,11 +250,9 @@ bool HasCycle (int ThisWinner, int loser)
           {
               return true;
           }
-           winnerConnected = true;
        }
     }
-
-   
+    //if the function makes it this far, obviously no cycle is present
     return false;
 }
 
@@ -283,7 +280,7 @@ void print_winner(void)
         bool columnFalse = true;
         for (int j = 0; j < candidate_count; j++)
         {
-            if (locked[i][j] == true)
+            if (locked[j][i] == true)
             {
                 columnFalse = false;
             }
