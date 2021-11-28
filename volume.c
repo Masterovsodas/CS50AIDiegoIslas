@@ -40,7 +40,20 @@ int main(int argc, char *argv[])
     fwrite(input, sizeof(uint8_t), sizeof(header), output);
 
     // TODO: Read samples from input file and write updated data to output file
-
+    
+    //creat a 16 bit value that will hold each sample of audio
+    int16_t buffer;
+    
+    //while 2 bytes (one int16_t value) can be read from the source file; put read value at teh adress of the buffer variable's memory
+    while(fread(&buffer, sizeof(int16_t), 1, input))
+    {
+        //multiply sample by factor to modify volume
+        buffer *= factor;
+        //then write from the adress of the buffer's memory, the next 16 bit value, one time, to the next part of the output file
+        fwrite(&buffer, sizeof(int16_t), 1, output);
+    }
+    
+    
     // Close files
     fclose(input);
     fclose(output);
