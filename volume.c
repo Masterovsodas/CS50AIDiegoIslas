@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
     int16_t buffer;
     
     //while 2 bytes (one int16_t value) can be read from the source file; put read value at teh adress of the buffer variable's memory
-    while(fread(&buffer, sizeof(int16_t), 1, input))
+    while (fread(&buffer, sizeof(int16_t), 1, input))
     {
         //multiply sample by factor to modify volume
         buffer *= factor;
