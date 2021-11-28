@@ -36,11 +36,12 @@ int main(int argc, char *argv[])
     // TODO: Copy header from input file to output file
     
     //create header storage
-    uint8_t header[44];
-    fwrite(input, sizeof(uint8_t), sizeof(header), output);
+    uint8_t header[HEADER_SIZE];
+    fread(header, sizeof(uint8_t), sizeof(header), input);
+    fwrite(header, sizeof(uint8_t), sizeof(header), output);
+   
 
-    // TODO: Read samples from input file and write updated data to output file
-    
+    //TODO: Read samples from input file and write updated data to output file
     //creat a 16 bit value that will hold each sample of audio
     int16_t buffer;
     
@@ -52,7 +53,6 @@ int main(int argc, char *argv[])
         //then write from the adress of the buffer's memory, the next 16 bit value, one time, to the next part of the output file
         fwrite(&buffer, sizeof(int16_t), 1, output);
     }
-    
     
     // Close files
     fclose(input);
