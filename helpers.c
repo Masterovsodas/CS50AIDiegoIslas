@@ -25,8 +25,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
     for (int i = 0; i < height; i++)
     {
-        
-        for (int j = 0; j < floor(width / 2.0f); j++)
+        for (int j = 0, n = floor(width / 2.0f); j < n; j++)
         {
             //swap current cell with opposite cell; use a temp (leftmost with rightmost)
             RGBTRIPLE temp = image[i][j];
@@ -34,8 +33,6 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
             image[i][width-j] = temp;
         }
     }
-    
-    
     return;
 }
 
