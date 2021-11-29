@@ -26,16 +26,11 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     
     int widthInterval = floor(width / 2.0f);
     
-    //make sure it doesnt become zero
-    if(widthInterval <= 0)
-    {
-        widthInterval = 1;
-    }
-    
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < widthInterval; j++)
         {
+            if
             //swap current cell with opposite cell; use a temp (leftmost with rightmost)
             RGBTRIPLE temp = image[i][j];
             image[i][j] = image[i][width-j];
