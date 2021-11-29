@@ -11,14 +11,12 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
       for (int  j = 0; j < width; j++)
       {
           int average = round((image[i][j].rgbtBlue + image[i][j].rgbtGreen + image[i][j].rgbtRed) / 3.0f);
-          printf("%i", average);
           //hard code average
           image[i][j].rgbtBlue = average;
           image[i][j].rgbtGreen = average;
           image[i][j].rgbtRed = average;
       }
   }
-  
     return;
 }
 
@@ -27,7 +25,8 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
     for (int i = 0; i < height; i++)
     {
-        for (int j = 0; j < floor(width / 2); j++)
+        
+        for (int j = 0; j < floor(width / 2.0f); j++)
         {
             //swap current cell with opposite cell; use a temp (leftmost with rightmost)
             RGBTRIPLE temp = image[i][j];
