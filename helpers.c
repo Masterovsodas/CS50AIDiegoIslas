@@ -23,9 +23,18 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
 // Reflect image horizontally
 void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
+    
+    int widthInterval = floor(width / 2.0f);
+    
+    //make sure it doesnt become zero
+    if(widthInterval <= 0)
+    {
+        widthInterval = 1;
+    }
+    
     for (int i = 0; i < height; i++)
     {
-        for (int j = 0, n = floor(width / 2.0f); j < n; j++)
+        for (int j = 0; j < widthInterval; j++)
         {
             //swap current cell with opposite cell; use a temp (leftmost with rightmost)
             RGBTRIPLE temp = image[i][j];
