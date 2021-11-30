@@ -6,17 +6,17 @@
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
 {
-  for (int i = 0; i < height; i++)
-  {
-      for (int  j = 0; j < width; j++)
-      {
-          int average = round((image[i][j].rgbtBlue + image[i][j].rgbtGreen + image[i][j].rgbtRed) / 3.0f);
-          //hard code average
-          image[i][j].rgbtBlue = average;
-          image[i][j].rgbtGreen = average;
-          image[i][j].rgbtRed = average;
-      }
-  }
+    for (int i = 0; i < height; i++)
+    {
+        for (int  j = 0; j < width; j++)
+        {
+            int average = round((image[i][j].rgbtBlue + image[i][j].rgbtGreen + image[i][j].rgbtRed) / 3.0f);
+            //hard code average
+            image[i][j].rgbtBlue = average;
+            image[i][j].rgbtGreen = average;
+            image[i][j].rgbtRed = average;
+        }
+    }
     return;
 }
 
@@ -100,17 +100,19 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 // Detect edges
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
-     //GET TEMP ARRAY!!! SWICTH VALUES LATER
+    //GET TEMP ARRAY!!! SWICTH VALUES LATER
     RGBTRIPLE temp[height][width];
     
     //make kernels!
-    int Gx[3][3] = {
+    int Gx[3][3] = 
+    {
         {-1, 0, 1},
         {-2, 0, 2},
         {-1, 0, 1}
     };
     
-    int Gy[3][3] = {
+    int Gy[3][3] = 
+    {
         {-1, -2, -1},
         {0, 0, 0},
         {1, 2, 1}
@@ -152,9 +154,9 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 }    
             }
             //make calculations
-            int NewBlue = round(sqrt(pow(gxBlue,2) + pow(gyBlue,2)));
-            int NewGreen = round(sqrt(pow(gxGreen,2) + pow(gyGreen,2)));
-            int NewRed = round(sqrt(pow(gxRed,2) + pow(gyRed,2)));
+            int NewBlue = round(sqrt(pow(gxBlue, 2) + pow(gyBlue, 2)));
+            int NewGreen = round(sqrt(pow(gxGreen, 2) + pow(gyGreen, 2)));
+            int NewRed = round(sqrt(pow(gxRed, 2) + pow(gyRed, 2)));
             
             //check if not  > 255 and apply to temp
             if (NewBlue > 255)
