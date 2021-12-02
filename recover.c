@@ -31,6 +31,7 @@ int main(int argc, char *argv[])
 
     while (endReached == false)
     {
+        printf("porn");
         //make proper name
         char *fileName = "";
         char *finalName = "0";
@@ -43,7 +44,7 @@ int main(int argc, char *argv[])
             fileName = "0";
         }
         printf("%s", finalName);
-        
+         printf("poop");
         //fopen
         FILE  *outputJpg = fopen(finalName, "w");
 
