@@ -8,7 +8,7 @@ typedef uint8_t BYTE;
 
 #define BLOCK 512;
 
-FILE* makeName(int fileCount);
+FILE *makeName(int fileCount);
 
 int main(int argc, char *argv[])
 {
@@ -37,12 +37,12 @@ int main(int argc, char *argv[])
 
     //read in blocks of 512, idk why we cant look for a header and then read in blocks; Brian said to do this, i have a negatively progressing IQ and thus am incapable of understanding why the ass this works
     FILE *outputJpg;
-    
+
     while (1)
     {
         //read the bytes
         BYTE block[512];
-        if(fread(block, sizeof(BYTE), 512, input) == 512)
+        if (fread(block, sizeof(BYTE), 512, input) == 512)
         {
             //check for jpg
             if (block[0] == 0xff && block[1] == 0xd8 && block[2] == 0xff && (block[3] <= 0xef && block[3] >= 0xe0))
@@ -61,25 +61,24 @@ int main(int argc, char *argv[])
                     outputJpg = makeName(fileCount);
                 }
             }
-            
-            //if bytes are writeable, go write them
+
+            //if bytes are writeable, go write them; the wriatble condition is written to avoid garbage pre first header
             if (writeStart == true)
             {
                 fwrite(block, sizeof(BYTE), 512, outputJpg);
             }
-            
         }
         else
         {
             break;
         }
     }
-    
+
     return 0;
 }
 
 
-FILE* makeName(int fileCount)
+FILE *makeName(int fileCount)
 {
     //make proper name
     char NumPart[8];
@@ -92,7 +91,7 @@ FILE* makeName(int fileCount)
         //add two zeroes
         snprintf(finalName, sizeof(finalName), "00%s", NumPart);
     }
-    else if(fileCount < 100)
+    else if (fileCount < 100)
     {
         //add a zero
         snprintf(finalName, sizeof(finalName), "0%s", NumPart);
