@@ -13,15 +13,15 @@ int main(int argc, char *argv[])
     //check input validdity and open files
     if (argc != 2)
     {
-        printf("Incorrect usage: please specify only one forensic image in the arguments");
+        printf("Incorrect usage: please specify only one forensic image in the arguments\n");
         return 1;
     }
 
     FILE *input = fopen(argv[1], "r");
-
+  
     if (input == NULL)
     {
-        printf("Could not open file");
+        printf("Could not open file\n");
         return 1;
     }
 
@@ -85,12 +85,13 @@ int main(int argc, char *argv[])
                         fread(newHeader, sizeof(BYTE), 4, input);
                         //makes file pointer go back 3 bytes in the file
                         fseek(input, -4, SEEK_CUR);
-                        printf("%i  %i %i %i\n", newHeader[0], newHeader[1], newHeader[2], newHeader[3]);
+                        //printf("%i  %i %i %i\n", newHeader[0], newHeader[1], newHeader[2], newHeader[3]);
 
 
                         //check if jpeg
                         if (newHeader[0] == 0xff && newHeader[1] == 0xd8 && newHeader[2] == 0xff && (newHeader[3]  <= 0xef && newHeader[3] >= 0xe0))
                         {
+                            fclose(outputJpg);
                             break;
                         }
                     }
