@@ -2,11 +2,13 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>
- #include <string.h>
+#include <string.h>
 
 typedef uint8_t BYTE;
 
 #define BLOCK 512;
+
+FILE* makeName(int fileCount);
 
 int main(int argc, char *argv[])
 {
@@ -18,7 +20,7 @@ int main(int argc, char *argv[])
     }
 
     FILE *input = fopen(argv[1], "r");
-  
+
     if (input == NULL)
     {
         printf("Could not open file\n");
@@ -28,90 +30,75 @@ int main(int argc, char *argv[])
     //workflow
     bool endReached = false;
     int fileCount = 0;
-
+    //bool to indicate when to start constantly writting
+    bool writeStart = false;
 
     //FILES ARENT ENDING FOR SOME REASON, FIND OUT WHY THE NEXT JPEG HEADER IS NOT FOUND; ANYWAYS I AHVE TO POO....
-    while (endReached == false)
+
+    //read in blocks of 512, idk why we cant look for a header and then read in blocks; Brian said to do this, i have a negatively progressing IQ and thus am incapable of understanding why the ass this works
+    FILE *outputJpg;
+    
+    while (1)
     {
-        //make proper name
-        char NumPart[4];
-        char finalName[4];
-        sprintf(NumPart, "%i", fileCount);
-
-        //add zeroes based on count
-        if (fileCount < 10)
+        //read the bytes
+        BYTE block[512];
+        if(fread(block, sizeof(BYTE), 512, input) == 512)
         {
-            //add two zeroes
-            snprintf(finalName, sizeof(finalName), "00%s", NumPart);
-        }
-        else if(fileCount < 100)
-        {
-            //add a zero
-            snprintf(finalName, sizeof(finalName), "0%s", NumPart);
-        }
-
-        //fopen
-        FILE  *outputJpg = fopen(strcat(finalName, ".jpg"), "w");
-
-
-        //look for header, after header found, use fseek to move back in the file
-        while (1)
-        {
-            //read header amount of bytes
-            BYTE header[4];
-            fread(header, sizeof(BYTE), 4, input);
-
-            //check if jpeg
-            if (header[0] == 0xff && header[1] == 0xd8 && header[2] == 0xff && (header[3] <= 0xef && header[3] >= 0xe0))
+            //check for jpg
+            if (block[0] == 0xff && block[1] == 0xd8 && block[2] == 0xff && (block[3] <= 0xef && block[3] >= 0xe0))
             {
-                printf("Jpog\n");
-                //read blocks until another jpeg signature is found, then fseek back 3 bytes and reset the function
-                fwrite(header, sizeof(BYTE), 4, outputJpg);
-
-                //break out of loop when next sig found
-                while(1)
+                //when first jpeg, continue loop, when beyond that close our file
+                if (writeStart == false)
                 {
-                    //make buffer
-                    BYTE block[512];
-
-                    //check if read successfully else return
-                    if (fread(block, sizeof(BYTE), 512, input) == 512)
-                    {
-                        //write to file
-                        fwrite(block, sizeof(BYTE), 512, outputJpg);
-
-                        //check for new header, else recycle pointer, always fseek....
-                        BYTE newHeader[4];
-                        fread(newHeader, sizeof(BYTE), 4, input);
-                        //makes file pointer go back 3 bytes in the file
-                        fseek(input, -4, SEEK_CUR);
-                        //printf("%i  %i %i %i\n", newHeader[0], newHeader[1], newHeader[2], newHeader[3]);
-
-
-                        //check if jpeg
-                        if (newHeader[0] == 0xff && newHeader[1] == 0xd8 && newHeader[2] == 0xff && (newHeader[3]  <= 0xef && newHeader[3] >= 0xe0))
-                        {
-                            fclose(outputJpg);
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        //end of file likely reached, kill prgm
-                        printf("end of file\n");
-                        return 0;
-                    }
+                    writeStart = true;
+                    outputJpg = makeName(fileCount);
+                }
+                else
+                {
+                    fclose(outputJpg);
+                    fileCount++;
+                    //make file and write first block to it
+                    outputJpg = makeName(fileCount);
                 }
             }
-            else
+            
+            //if bytes are writeable, go write them
+            if (writeStart == true)
             {
-                //look for header again
-                continue;
+                fwrite(block, sizeof(BYTE), 512, outputJpg);
             }
-            printf("end of this jpeg\n");
-            //if we get here we went though the while loop and thus are done
+            
+        }
+        else
+        {
             break;
         }
-        fileCount++;
     }
+    
+    return 0;
+}
+
+
+FILE* makeName(int fileCount)
+{
+    //make proper name
+    char NumPart[8];
+    char finalName[8];
+    sprintf(NumPart, "%i", fileCount);
+
+    //add zeroes based on count
+    if (fileCount < 10)
+    {
+        //add two zeroes
+        snprintf(finalName, sizeof(finalName), "00%s", NumPart);
+    }
+    else if(fileCount < 100)
+    {
+        //add a zero
+        snprintf(finalName, sizeof(finalName), "0%s", NumPart);
+    }
+
+    //fopen
+    FILE  *outputJpg = fopen(strcat(finalName, ".jpg"), "w");
+    return outputJpg;
 }
