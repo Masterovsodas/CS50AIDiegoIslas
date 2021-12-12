@@ -138,7 +138,7 @@ bool unload(void)
     {
         node *cursorList = table[i];
 
-        while (0 == 0)
+        while (1)
         {
             node *temp = cursorList->next;
             free(cursorList);
