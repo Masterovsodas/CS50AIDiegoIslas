@@ -144,5 +144,5 @@ bool unload(void)
             cursorList = temp->next;
         }
     }
-    return false;
+    return true;
 }
