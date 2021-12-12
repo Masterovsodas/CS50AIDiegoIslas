@@ -34,7 +34,7 @@ bool check(const char *word)
     //node defined as the head of the linked list
     node *marker = table[navIndex];
     
-    while (marker!= NULL)
+    while (marker != NULL)
     {
         //check if strcasecmp of both words returns equal
         if (strcasecmp(marker->word, word) == 0)
@@ -120,6 +120,7 @@ bool load(const char *dictionary)
 
        wordCount++;
     }
+    fclose(words);
     return true;
 }
 
