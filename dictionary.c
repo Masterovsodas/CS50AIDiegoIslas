@@ -140,9 +140,9 @@ bool unload(void)
 
         while (cursorList != NULL)
         {
-            node *temp = cursorList;
+            node *temp = cursorList->next;
             free(cursorList);
-            cursorList = temp->next;
+            cursorList = temp;
         }
     }
     return true;
