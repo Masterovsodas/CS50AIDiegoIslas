@@ -12,7 +12,7 @@
 typedef struct node
 {
     char word[LENGTH + 1];
-    struct node *next;
+    struct node *next = NULL;
 }
 node;
 
@@ -138,12 +138,8 @@ bool unload(void)
     {
         node *cursorList = table[i];
 
-        while (1)
+        while (cursorList != NULL)
         {
-            if (cursorList == NULL)
-            {
-                break;
-            }
             node *temp = cursorList->next;
             free(cursorList);
             cursorList = temp;
