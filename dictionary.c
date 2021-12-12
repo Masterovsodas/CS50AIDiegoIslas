@@ -143,7 +143,7 @@ bool unload(void)
             node *temp = cursorList;
             free(cursorList);
             cursorList = temp->next;
-            //free(temp);
+            free(temp);
         }
     }
     return true;
