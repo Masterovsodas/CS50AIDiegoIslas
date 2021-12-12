@@ -33,7 +33,7 @@ bool check(const char *word)
     int navIndex = hash(word);
     //node defined as the head of the linked list
     node *marker = table[navIndex];
-    
+
     while (marker != NULL)
     {
         //check if strcasecmp of both words returns equal
@@ -59,7 +59,7 @@ unsigned int hash(const char *word)
     //do math
     //strchr returns a pointer, so we subtract it from the pointer to the first letter to get our index / difference.
     int firstLetterHop = (strchr(alphabet, tolower(word[0])) - alphabet) * 27;
-    
+
     //check if letter search goes out of bounds; do it as such because strchr returns the amount of values surfed before reaching \0 or the searched value. so if you subtract the out of bounds adress from the initial one, you get an out of bounds second value.
     if (strchr(apostAlph, tolower(word[1])) - apostAlph > strlen(apostAlph) - 1)
     {
@@ -137,13 +137,13 @@ bool unload(void)
     for (int i = 0; i < N; i++)
     {
         node *cursorList = table[i];
-        
+
         while (cursorList != NULL)
         {
             node *temp = cursorList;
             free(cursorList);
             cursorList = temp->next;
-            free(temp);
+            //free(temp);
         }
     }
     return true;
