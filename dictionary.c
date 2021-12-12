@@ -12,7 +12,7 @@
 typedef struct node
 {
     char word[LENGTH + 1];
-    struct node *next = NULL;
+    struct node *next;
 }
 node;
 
@@ -95,6 +95,8 @@ bool load(const char *dictionary)
        {
            return false;
        }
+       //initialize as null
+       thisNode->next = NULL;
        //put word into node
        strcpy(thisNode->word, thisWord);
 
