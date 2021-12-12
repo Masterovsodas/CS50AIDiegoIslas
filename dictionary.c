@@ -20,7 +20,7 @@ node;
 int wordCount = 0;
 
 // Number of buckets in hash table, has one for every ordered combination of two letter sin the alphabet (ie: 0 = aa, 1= ab...)....27 is added in second to get words that may have a second letter apostrophe
-const unsigned int N = 26*27;
+const unsigned int N = 26 * 27;
 
 // Hash table (array (square brackets) of linked lists)
 node *table[N];
@@ -80,7 +80,7 @@ bool load(const char *dictionary)
 {
     //open dictionary
     FILE *words = fopen(dictionary, "r");
-    if(words == NULL)
+    if (words == NULL)
     {
         return false;
     }
@@ -89,38 +89,40 @@ bool load(const char *dictionary)
     //read dictionary words
     while (fscanf(words, "%s", thisWord) != EOF)
     {
-       //hash word
-       node *thisNode = malloc(sizeof(node));
-       if (thisNode == NULL)
-       {
-           return false;
-       }
-       //initialize as null
-       thisNode->next = NULL;
-       //put word into node
-       strcpy(thisNode->word, thisWord);
+        //hash word
+        node *thisNode = malloc(sizeof(node));
+        if (thisNode == NULL)
+        {
+            return false;
+        }
+        //initialize as null
+        thisNode->next = NULL;
+       
+       
+        //put word into node
+        strcpy(thisNode->word, thisWord);
 
-       //hash word and find out which bucket it falls into using hash function, then load it into table here
-       int wordIndex = hash(thisWord);
+        //hash word and find out which bucket it falls into using hash function, then load it into table here
+        int wordIndex = hash(thisWord);
 
-       //printf("%s  %i\n", thisWord, wordIndex);
+        //printf("%s  %i\n", thisWord, wordIndex);
 
-       //add to linked list
-       //check if first value in list
-       if (table[wordIndex] == NULL)
-       {
-           //make initial pointer equal to thisNode pointer
-          table[wordIndex] = thisNode;
-       }
-       else
-       {
-          //first make this node point to the start of the list
-          thisNode->next = table[wordIndex]->next;
-          //then make og pointer point to new node
-          table[wordIndex]->next = thisNode;
-       }
+        //add to linked list
+        //check if first value in list
+        if (table[wordIndex] == NULL)
+        {
+            //make initial pointer equal to thisNode pointer
+            table[wordIndex] = thisNode;
+        }
+        else
+        {
+            //first make this node point to the start of the list
+            thisNode->next = table[wordIndex]->next;
+            //then make og pointer point to new node
+            table[wordIndex]->next = thisNode;
+        }
 
-       wordCount++;
+        wordCount++;
     }
     fclose(words);
     return true;
