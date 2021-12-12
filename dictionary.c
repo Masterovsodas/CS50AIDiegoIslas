@@ -3,7 +3,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include <strings.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "dictionary.h"
 
 // Represents a node in a hash table
@@ -24,14 +26,24 @@ const unsigned int N = 26*27;
 node *table[N];
 
 
-
-
-
-
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
-    // TODO
+    //get nav index
+    int navIndex = hash(word);
+    //node defined as the head of the linked list
+    node *marker = table[navIndex];
+    
+    while (marker!= NULL)
+    {
+        //check if strcasecmp of both words returns equal
+        if (strcasecmp(marker->word, word) == 0)
+        {
+            return true;
+        }
+        //if not move the marker
+        marker = marker->next;
+    }
     return false;
 }
 
@@ -45,19 +57,18 @@ unsigned int hash(const char *word)
     int hashValue = 0;
 
     //do math
-
     //strchr returns a pointer, so we subtract it from the pointer to the first letter to get our index / difference.
-    int firstLetterHop = (strchr(alphabet, word[0]) - alphabet) * 27;
-
+    int firstLetterHop = (strchr(alphabet, tolower(word[0])) - alphabet) * 27;
+    
     //check if letter search goes out of bounds; do it as such because strchr returns the amount of values surfed before reaching \0 or the searched value. so if you subtract the out of bounds adress from the initial one, you get an out of bounds second value.
-    if (strchr(apostAlph, word[1]) - apostAlph > strlen(apostAlph) - 1)
+    if (strchr(apostAlph, tolower(word[1])) - apostAlph > strlen(apostAlph) - 1)
     {
         return firstLetterHop;
     }
     else
     {
         //get second letter index and send it off
-        int secondLetterHop = (strchr(apostAlph, word[1]) - apostAlph);
+        int secondLetterHop = (strchr(apostAlph, tolower(word[1])) - apostAlph);
         return firstLetterHop + secondLetterHop;
     }
 }
@@ -92,7 +103,7 @@ bool load(const char *dictionary)
 
        //printf("%s  %i\n", thisWord, wordIndex);
 
-       //add to linked list 
+       //add to linked list
        //check if first value in list
        if (table[wordIndex] == NULL)
        {
@@ -106,7 +117,7 @@ bool load(const char *dictionary)
           //then make og pointer point to new node
           table[wordIndex]->next = thisNode;
        }
-       
+
        wordCount++;
     }
     return true;
@@ -121,6 +132,17 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful, else false
 bool unload(void)
 {
-    // TODO
+    //loop through entire table
+    for (int i = 0; i < N; i++)
+    {
+        node *cursorList = table[i];
+        
+        while (cursorList != NULL)
+        {
+            node *temp = cursorList;
+            free(cursorList);
+            cursorList = temp->next;
+        }
+    }
     return false;
 }
