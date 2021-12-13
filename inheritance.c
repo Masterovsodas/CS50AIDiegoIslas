@@ -43,13 +43,15 @@ person *create_family(int generations)
 {
     // TODO: Allocate memory for new person; this is gen 0 (the LATEST GENERATION) at first ancestors are being generated here not children
     person *newPerson = malloc(sizeof(person));
-
     // Generation with parent data
     if (generations > 1)
     {
         // TODO: Recursively create blood type histories for parents
         person *Parent1 = create_family(generations - 1);
         person *Parent2 = create_family(generations - 1);
+        
+        newPerson->parents[0] = Parent1;
+        newPerson->parents[1] = Parent2;
         
         // TODO: Randomly assign child alleles based on parents
         //rand return # between 0 and 32k, if we do mod 2, we can get 0 or 1 randomly
