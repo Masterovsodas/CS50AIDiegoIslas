@@ -29,7 +29,23 @@ def main():
 
     # if number is valid, then check what model it is by inspecting its vals
     match number[0]:
-        case '3':
-            print("ok")
+        case "3":
+            if (len(number) == 15 and (number[1] == "4" or number[1] == "7")):
+                print("AMEX")
+                return
+
+        case "4":
+            if (len(number) == 13 or len(number) == 16):
+                print("VISA")
+                return
+
+        case "5":
+            if (len(number) == 16 and int(number[1]) <= 5):
+                print("MASTERCARD")
+                return
+    # else is invalid plus return
+    print("INVALID")
+    return
+
 
 main()
