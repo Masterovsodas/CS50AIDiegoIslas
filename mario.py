@@ -1,7 +1,17 @@
-height = 0
-while(height <= 0 or height > 8):
-    height = int(input("Height: "))
+def getInt():
+    try:
+        intv = int(input("Height: "))
+    except:
+        getInt()
+        return
 
+    if(intv <= 0 or intv > 8):
+        getInt()
+        return
+
+    return intv
+
+height = getInt()
 
 def main():
     build(height)
@@ -27,6 +37,5 @@ def build(h):
         for i in range(height - blanks):
             print("#", end="")
         print()
-
 
 main()
