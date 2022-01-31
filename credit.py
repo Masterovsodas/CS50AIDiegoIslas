@@ -17,8 +17,7 @@ def main():
             num = str(num)
             multSum += int(num[0])
 
-
-    #now add un multed nums
+    # now add un multed nums
     addSum = 0
     for i in range(len(number)-1, -1, -2):
         addSum += int(number[i])
