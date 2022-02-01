@@ -20,8 +20,13 @@ def main():
     avgLettersPerWords = (letters/words) * 100
     avgSentencesPerWords = (sentences/words) * 100
 
-    grade =  0.0588 *  avgLettersPerWords  - 0.296 * avgSentencesPerWords - 15.8
-    print("Grade: " + str(round(grade)))
+    grade =  round(0.0588 *  avgLettersPerWords  - 0.296 * avgSentencesPerWords - 15.8)
 
+    if(grade < 1):
+        print("Before Grade 1")
+    elif(grade > 16):
+        print("Grade 16+")
+    else:
+        print("Grade: " + str(grade))
 
 main()
