@@ -56,7 +56,7 @@ def main():
     print("no match")
 
 
-return
+    return
 
 
 def longest_match(sequence, subsequence):
