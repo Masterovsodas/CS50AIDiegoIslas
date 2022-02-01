@@ -51,6 +51,9 @@ def main():
 
         if(matches == len(sampleLongest)):
             print(suspect["name"])
+            return
+
+    print("no match")
 
 
 return
