@@ -35,5 +35,6 @@ SELECT activity,license_plate,hour,minute FROM bakery_security_logs WHERE year =
     --G412CB7
 
     --FIND PEOPLE WITH THIS LISCENSE PLATE
-    SELECT name FROM people WHERE liscense_plate = "G412CB7";
+    SELECT name FROM people WHERE license_plate = "G412CB7";
+    --name = SOFIA
 
