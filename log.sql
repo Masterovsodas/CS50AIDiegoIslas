@@ -97,3 +97,7 @@ SELECT day, hour, minute, flights.id FROM flights JOIN airports ON flights.origi
 --GET ACCOMPLICE BY FINDING OUT WHO CALLED BRUCE FOR LESS THAN 1 MIN
 SELECT name FROM people JOIN phone_calls ON people.phone_number = phone_calls.receiver WHERE year = 2021 AND month = 7 AND day = 28 AND duration <= 60 AND phone_calls.caller = "(367) 555-5533"; --Bruce phone
 --ROBIN YOU SLIMY @#*&
+
+
+
+----GOT YOU MFKZ!!!!!
