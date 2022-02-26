@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+
+
+
+        <script>
+            // TODO: Add code to check answers to questions
+            //void start
+            document.addEventListener('DOMContentLoaded', function()
+            {
+
+                //question 1
+                let correctButton = document.querySelector("#correct");
+                let incorrectButtons = document.querySelectorAll(".incorrect");
+                let rightText = document.querySelector("#answerStatus1");
+                //for correct button
+                correctButton.addEventListener('click', function()
+                {
+                    rightText.innerHTML = "Correct!";
+                    rightText.style.visibility = "visible";
+                    correctButton.style.backgroundColor = "green";
+                });
+
+                //for all incorrectButtons
+                for(let i =0; i < incorrectButtons.length; i++)
+                {
+                    incorrectButtons[i].addEventListener('click', function()
+                    {
+                         rightText.innerHTML = "Incorrect!";
+                         rightText.style.visibility = "visible";
+                        incorrectButtons[i].style.backgroundColor = "red";
+                    })
+                }
+
+                //question 2
+                document.querySelector("#subBtn").addEventListener('click', function()
+                {
+                    let answer = document.querySelector("#answer2");
+                    let rightText2 = document.querySelector("#answerStatus2");
+
+                    if(answer.value.includes("many damages"))
+                    {
+                        rightText2.innerHTML = "Correct!";
+                        rightText2.style.visibility = "visible";
+                    }
+                    else
+                    {
+                         rightText2.innerHTML = "Incorrect!";
+                        rightText2.style.visibility = "visible";
+                    }
+                })
+
+            })
+        </script>
+
+
+
+
+
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- question array heading-->
+                <h3>What is the price of conter-strik and internet in MagDonal?????????</h3>
+                <h4 id = "answerStatus1" style = "visibility:hidden">Correct!</h4>
+
+                <!-- list of questions and buttons -->
+                <ul id="multi">
+                    <!-- Q1 -->
+                    <li>
+                        <button class = "incorrect">4 dolor</button>
+                    </li>
+
+                    <li>
+                        <button class = "incorrect">70 euro!!?</button>
+                    </li>
+
+                     <li>
+                        <button class = "incorrect">Reece's puffs * 5</button>
+                    </li>
+
+                     <li>
+                        <button id = "correct">MagDonal bad internet, truck questioN!!!!</button>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <h3>How much damage does freddy fazbear do??</h3>
+                <h4 id = "answerStatus2" style = "visibility:hidden">Correct!</h4>
+
+                <input id = "answer2" type = "text">
+                <input id = "subBtn" type = "submit">
+            </div>
+        </div>
+    </body>
+</html>
