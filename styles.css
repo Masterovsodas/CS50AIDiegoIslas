@@ -1,0 +1,49 @@
+h1
+{
+    text-align: center;
+}
+
+ .navBar
+ {
+    display: flex;
+    justify-content: center;
+}
+
+#home
+{
+    position:relative;
+}
+
+.navButton
+{
+    margin:5px;
+}
+
+.mainImgs
+{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p
+{
+    padding-left:25px;
+}
+
+h2
+{
+    padding-left:25px;
+    font-size:250%;
+}
+
+h3
+{
+    padding-left:25px;
+}
+
+.textQ
+{
+    margin-left:25px;
+}
+

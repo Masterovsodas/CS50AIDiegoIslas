@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <title>OTMGirls</title>
+
+        <!-- JS AREA -->
+        <script>
+
+            document.addEventListener('DOMContentLoaded', function()
+            {
+                let textBox = document.querySelectorAll(".textQ");
+                textBox = textBox[0];
+                let subButton = document.querySelectorAll(".answerBut");
+                subButton = subButton[0];
+
+                //add listeners
+                subButton.addEventListener('click', function(){
+                    let answerStatus = document.querySelectorAll(".answerStatus");
+                    answerStatus = answerStatus[0];
+                    //only allow answer once
+                    if(textBox.value.toLowerCase().includes("japan"))
+                    {
+                        answerStatus.style.visibility = "visible";
+                        answerStatus.innerHTML = "Correct!"
+                        answerStatus.style.color = "green";
+                    }
+                    else
+                    {
+                        answerStatus.style.visibility = "visible";
+                        answerStatus.innerHTML = "Incorrect!"
+                        answerStatus.style.color = "red";
+                    }
+                });
+            });
+
+
+
+
+        </script>
+
+    </head>
+    <body>
+        <!--HOME BUTTON-->
+        <form action = "/index.html"> <input type="submit" value="Home" /> </form>
+        <!-- General purpose nav list -->
+        <ul class = "navBar">
+            <form action = "/Burn.html"class = "navButton"> <input type="submit" value="Black Bomb A: Burn" /> </form>
+            <form action = "/AggroG.html"class = "navButton"> <input type="submit" value="OTMGirls: Agressive Girl" /> </form>
+            <form action = "/LowLife.html"class = "navButton"> <input type="submit" value="Neck Deep: Lowlife" /> </form>
+            <form action = "/Seasons.html" class = "navButton"> <input type="submit" value="Richie Branson: Seasons May Change, But Bonds Last Forever" /> </form>
+        </ul>
+
+        <!--page start-->
+        <h1>OTMGirls: Agressive Girl </h1>
+        <img src = "/Images/fruity.jpeg" class= "mainImgs" height = 200 width = 200>
+
+        <h2>"Fruity metal, Very good"</h2>
+        <hr>
+        <p>
+            This is an amazing and original song with an unprecendented blend of death metal and pop that surpirsingly works! Whether you want to hit nasty PRs in the gym to a blood pumping,
+            ruthless, and brutally motivational track; or you want to hit PRs with to a fruity and optimistic track, this is for you. The creativity and experimental nature of the track
+            was surely a bold risk by the composers, but that risk naturally payed off hundredfold whne the song was released and a new genre was born.
+        </p>
+
+        <h3> Pop Quiz: Where is this band from?</h3>
+        <input type = "text" class = "textQ">
+        <input type = "submit" value = "Check Answer" class = "answerBut">
+        <p class = "answerStatus" style = " visibility: hidden;"> Correct!</p>
+
+    </body>
+</html>
