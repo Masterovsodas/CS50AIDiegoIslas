@@ -77,10 +77,14 @@ def buy():
     if request.method == "POST":
         shares = request.form.get("shares")
         symbol = request.form.get("symbol")
+
+        if not isinstance(shares, int):
+            return apology("WHAT")
+
         # get data
         symbolData = lookup(symbol)
 
-        if symbolData["symbol"]:
+        if symbolData:
             # after validating input grab cost
             cost = symbolData["price"]
 
