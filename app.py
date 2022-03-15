@@ -80,7 +80,7 @@ def buy():
 
         if not shares.isnumeric():
             return apology("NEJ")
-        elif float(shares).is_integer() or int(shares) < 0:
+        elif not float(shares).is_integer() or int(shares) < 0:
             return apology("NEJ")
 
         # get data
