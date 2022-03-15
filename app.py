@@ -191,7 +191,7 @@ def quote():
         # get data from IEX
         symbolData = lookup(symbol)
 
-        if symbolData["symbol"]:
+        if symbolData:
             # grab cost once input is validated
             cost = symbolData["price"]
             return render_template("quoted.html", symbol=symbolData["symbol"], cost=cost)
