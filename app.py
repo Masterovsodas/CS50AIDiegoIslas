@@ -78,8 +78,8 @@ def buy():
         shares = request.form.get("shares")
         symbol = request.form.get("symbol")
 
-        if not shares.isnumeric() or shares.isdecimal() or int(shares) < 0:
-            return apology("WHAT")
+        if not shares.isnumeric() or not float(shares).is_integer() or int(shares) < 0:
+            return apology(str(float(shares)))
 
         # get data
         symbolData = lookup(symbol)
