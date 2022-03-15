@@ -6,6 +6,7 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
+import math
 
 from helpers import apology, login_required, lookup, usd
 
@@ -77,8 +78,8 @@ def buy():
     if request.method == "POST":
         shares = request.form.get("shares")
         symbol = request.form.get("symbol")
-        shares = int(shares)
-        if not isinstance(shares, int) and not isinstance(shares, float) and not isinstance(shares, str):
+
+        if shares < 0 or isisntance(shares, float) or math.isnan(shares):
             return apology("WHAT")
 
         # get data
