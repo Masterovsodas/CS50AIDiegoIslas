@@ -209,7 +209,7 @@ def register():
         # get site data
         user = request.form.get("username")
         password = request.form.get("password")
-        passConf = request.form.get("passwordConf")
+        passConf = request.form.get("confirmation")
 
         # check unique userName
         if len(db.execute("SELECT * FROM users WHERE username LIKE ?", user)) > 0:
