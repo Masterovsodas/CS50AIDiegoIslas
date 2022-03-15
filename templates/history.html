@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+  <table class="table">
+    <thead>
+        <th class="text-start">Symbol</th>
+        <th class="text-start">Shares</th>
+        <th class="text-start">Price</th>
+        <th class ="text-start">Date</th>
+    </thead>
+
+    <tbody>
+        {%for purchase in history%}
+            <tr>
+                <td class="text-start"> {{purchase["symbol"]}} </td>
+                <td class="text-start"> {{purchase["shares"]}} </td>
+                <td class="text-start"> {{purchase["price"]}} </td>
+                <td class="text-start"> {{purchase["date"]}} </td>
+            </tr>
+        {%endfor%}
+    </tbody>
+  </table>
+
+
+{% endblock %}
