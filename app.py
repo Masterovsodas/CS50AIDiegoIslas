@@ -78,7 +78,7 @@ def buy():
         shares = request.form.get("shares")
         symbol = request.form.get("symbol")
 
-        if not isinstance(shares, int) and not isinstance(shares, float) and not isinstance(shares, str):
+        if not shares.isInteger() and shares < 0:
             return apology("WHAT")
 
         # get data
