@@ -99,10 +99,9 @@ def shortest_path(source, target):
     # checker for path, note that BFS will find
     PathFound = False
     
-
     for neighbor in initNeighbors:
         # our states will contain a neighbor which is a tuple, kind of like an array (movie_id, person_id), and a "parent" Node containg its own tuple state
-        frontier.add(Node(state = neighbor, parent = None, action = None))
+        frontier.add(Node(state=neighbor, parent=None, action=None))
 
     # employ BFS in order to search for connected people
     while not PathFound:
@@ -124,7 +123,7 @@ def shortest_path(source, target):
         for neighbor in thisNeighbors:
             # check explored
             if neighbor not in explored:
-                frontier.add(Node(state = neighbor, parent = thisNode, action = None))
+                frontier.add(Node(state=neighbor, parent=thisNode, action=None))
         
     return NotImplementedError
 
@@ -168,7 +167,6 @@ def neighbors_for_person(person_id):
     return neighbors
 
 
-
 def returnSolution(goalNode):
     # make LAST node our goal, then place all parent ndoes in front util we reach the source
     solutionArray = [goalNode.state]
@@ -176,15 +174,13 @@ def returnSolution(goalNode):
     while True:
         # get node of parent and add state to our solution chain, per the specification of the problem
         currentNode = currentNode.parent
-        solutionArray.insert(0,currentNode.state)
+        solutionArray.insert(0, currentNode.state)
 
         # when head reached break
         if currentNode.parent == None:
             break
     
     return solutionArray
-
-
 
 if __name__ == "__main__":
     main()
