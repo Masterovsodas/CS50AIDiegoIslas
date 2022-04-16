@@ -41,21 +41,19 @@ def player(board):
         return "O"
 
 
-
 def actions(board):
     
     moves = []
     for i in range(3):
         for j in range(3):
             if board[i][j] == EMPTY:
-                act = (i,j)
+                act = (i, j)
                 moves.append(act)
         
     return moves
 
 
 def result(board, action):
-    
     """""
     tempBor = copy.deepcopy(board)
 
@@ -75,7 +73,6 @@ def result(board, action):
     else:
         raise Exception
     
-
 
 def winner(board):
     # ROWS
@@ -118,9 +115,9 @@ def terminal(board):
 def utility(board):
     if terminal(board) == True:
         win = winner(board)
-        if win  == "X":
+        if win == "X":
             return 1
-        elif win  == "O":
+        elif win == "O":
             return -1
         else:
             return 0
