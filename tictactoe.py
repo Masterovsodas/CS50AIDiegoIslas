@@ -151,7 +151,6 @@ def minimax(board):
                 break
         action = act[index]
 
-        
     else:
         paths = minVal(board,  act, True)
         # each action index should correspond to a respective pathVal returned, compare the currentGreates number and store the index
@@ -169,9 +168,6 @@ def minimax(board):
     return action
 
 
-
-
-
 def minVal(board, acts, root):
     if terminal(board) == True:
         return utility(board)
@@ -186,7 +182,7 @@ def minVal(board, acts, root):
     """
     
     for act in acts:
-        pathVals.append(maxVal(result(board,act), actions(result(board,act)), False))
+        pathVals.append(maxVal(result(board, act), actions(result(board, act)), False))
     
     # sum the value of all paths and call it the state value, return that
     currLowest = INFINITE
@@ -216,7 +212,7 @@ def maxVal(board, acts, root):
     is the one that will be take from the actions array.
     """
     for act in acts:
-        pathvals.append(minVal(result(board,act), actions(result(board,act)), False))
+        pathvals.append(minVal(result(board, act), actions(result(board, act)), False))
     
     currGreatest = -INFINITE
     for i in pathvals:
@@ -227,6 +223,7 @@ def maxVal(board, acts, root):
         return currGreatest * empties(board)
     else: 
         return pathvals
+
 
 def empties(board):
     amount = 0
