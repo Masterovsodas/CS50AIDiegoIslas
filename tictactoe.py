@@ -158,12 +158,12 @@ def minimax(board):
         index = None
         for i in range(len(paths)):
             if paths[i] < currentLow:
-                currentLow= paths[i]
+                currentLow = paths[i]
                 index = i
             
             if paths[i] == -1:
                 break
-        action =  act[index]
+        action = act[index]
 
     return action
 
