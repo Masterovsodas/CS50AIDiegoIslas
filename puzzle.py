@@ -13,7 +13,7 @@ CKnave = Symbol("C is a Knave")
 # A says "I am both a knight and a knave."
 knowledge0 = And(
     # facts
-    Not(And(AKnight,AKnave)),
+    Not(And(AKnight, AKnave)),
     Or(AKnight, AKnave),
     # connections
     Implication(AKnave, Not(And(AKnight, AKnave))),
@@ -38,7 +38,7 @@ knowledge1 = And(
 
 # Puzzle 2
 # A says "We are the same kind."
-sentence0 = Or(And(AKnight, BKnight),And(AKnave,BKnave))
+sentence0 = Or(And(AKnight, BKnight), And(AKnave,BKnave))
 # B says "We are of different kinds."
 sentence1 = Or(And(AKnight,BKnave), And(AKnave, BKnight))
 
@@ -49,8 +49,8 @@ knowledge2 = And(
    Not(And(BKnight, BKnave)),
    Or(BKnight,BKnave),
 
-   #connections
-   #sentences are contradictory
+   # connections
+   # sentences are contradictory
    Implication(sentence0, Not(sentence1)),
    Implication(sentence1, Not(sentence0)),
 
@@ -71,17 +71,17 @@ sentence2 = CKnave
 # C says "A is a knight." Knight
 sentence3 = AKnight
 
-#NOTHING CAN EVER SAY "I AM A KNAVE"; BECAUSE THEN IT CANT BE A KNIGHT CAUSE THEY ALWAYS TELL TRUTH AND A KNAVE WOULD BE LYING
+# NOTHING CAN EVER SAY "I AM A KNAVE"; BECAUSE THEN IT CANT BE A KNIGHT CAUSE THEY ALWAYS TELL TRUTH AND A KNAVE WOULD BE LYING
 knowledge3 = And(
-   #facts
+   # facts
    Not(And(AKnight, AKnave)),
    Or(AKnight, AKnave),
    Not(And(BKnight, BKnave)),
-   Or(BKnight,BKnave),
+   Or(BKnight, BKnave),
    Not(And(CKnight, CKnave)),
-   Or(CKnight,CKnave),
+   Or(CKnight, CKnave),
 
-   # connections
+    # connections
     Implication(sentence1, Not(idea0)),
     Implication(sentence2, Not(sentence3)),
     Implication(sentence3, And(Not(sentence2), Not(sentence1))),
