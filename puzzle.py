@@ -17,7 +17,7 @@ knowledge0 = And(
     Or(AKnight, AKnave),
     # connections
     Implication(AKnave, Not(And(AKnight, AKnave))),
-    Implication(AKnight, And(AKnave,AKnight))
+    Implication(AKnight, And(AKnave, AKnight))
 )
 
 # Puzzle 1
@@ -25,22 +25,22 @@ knowledge0 = And(
 # B says nothing.
 statement = And(AKnave, BKnave)
 knowledge1 = And(
-   #facts
+    #  facts
    Not(And(AKnight, AKnave)),
    Or(AKnight, AKnave),
    Not(And(BKnight, BKnave)),
-   Or(BKnight,BKnave),
+   Or(BKnight, BKnave),
 
-   # connections
+    # connections
    Implication(AKnight, statement),
    Implication(AKnave, Not(statement))
 )
 
 # Puzzle 2
 # A says "We are the same kind."
-sentence0 = Or(And(AKnight, BKnight), And(AKnave,BKnave))
+sentence0 = Or(And(AKnight, BKnight), And(AKnave, BKnave))
 # B says "We are of different kinds."
-sentence1 = Or(And(AKnight,BKnave), And(AKnave, BKnight))
+sentence1 = Or(And(AKnight, BKnave), And(AKnave, BKnight))
 
 knowledge2 = And(
     #facts
