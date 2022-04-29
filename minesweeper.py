@@ -102,7 +102,6 @@ class Sentence():
     def __str__(self):
         return f"{self.cells} = {self.count}"
 
-
     def known_mines(self):
         """
         Returns the set of all cells in self.cells known to be mines.
@@ -114,14 +113,12 @@ class Sentence():
         else:
             return set()
 
-
     def known_safes(self):
         # same as known_mines
         if self.count == 0:
             return self.cells
         else:
             return set()
-
 
     def mark_mine(self, cell):
         """
@@ -211,8 +208,8 @@ class MinesweeperAI():
 
         # add all neighbors as possible mines, by running a 3*3 loop for all "adjacent cells"; edge checking will be done by asking if > self.height / width etc
         # range second param is exclusive, kinda stoopid
-        for i in range(-1,2):
-            for j in range(-1,2):
+        for i in range(-1, 2):
+            for j in range(-1, 2):
                 # edge check
                 # don't add self
                 if(i == 0 and j == 0):
@@ -227,7 +224,6 @@ class MinesweeperAI():
         # add knowledge 
         if len(newInfo.cells) > 0:
             self.knowledge.append(newInfo)
-
 
         # 4) mark new cells as safe or mines based on ALL SENTENCES IN KB
         for sentence in self.knowledge:
@@ -244,7 +240,7 @@ class MinesweeperAI():
                     toMark.append(cell)
 
                 for i in toMark:
-                   self.mark_safe(i)
+                    self.mark_safe(i)
 
                 self.knowledge.remove(sentence)
 
@@ -255,7 +251,7 @@ class MinesweeperAI():
                     toMark.append(cell)
 
                 for i in toMark:
-                   self.mark_mine(i)
+                    self.mark_mine(i)
 
                 self.knowledge.remove(sentence)
                
@@ -288,8 +284,7 @@ class MinesweeperAI():
                     sentence.count -= sentence2.count
         # adds all elements from one list into another, COOL!
         self.knowledge += newInfor
-
-                   
+      
     def make_safe_move(self):
         """
         Returns a safe cell to choose on the Minesweeper board.
@@ -307,7 +302,6 @@ class MinesweeperAI():
         # no guaranteeed safe, use mine knowledge in next function
         return None
 
-
     def make_random_move(self):
         """
         Returns a move to make on the Minesweeper board.
@@ -319,7 +313,7 @@ class MinesweeperAI():
             # gen random cell i j
             i = random.randrange(8)
             j = random.randrange(8)
-            cell = (i,j)
+            cell = (i, j)
 
             # if all used return none
             if len(self.mines) == 8 and len(self.moves_made) == 56:
