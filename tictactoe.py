@@ -2,8 +2,6 @@
 Tic Tac Toe Player
 """
 
-from asyncio.windows_events import INFINITE
-from logging import exception
 import math
 import copy
 
@@ -12,7 +10,7 @@ X = "X"
 O = "O"
 EMPTY = None
 
-
+INFINITE = math.inf
 def initial_state():
     """
     Returns starting state of the board.
@@ -54,15 +52,6 @@ def actions(board):
 
 
 def result(board, action):
-    """""
-    tempBor = copy.deepcopy(board)
-
-    if tempBor[action[0]][action[1]] == EMPTY:
-        tempBor[action[0]][action[1]] == player(tempBor)
-        return tempBor
-    else:
-        raise Exception
-    """""
 
     if action in actions(board):
         (i, j) = action
