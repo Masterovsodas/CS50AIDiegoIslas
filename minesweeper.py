@@ -216,7 +216,8 @@ class MinesweeperAI():
                     continue
                 if (cell[0] + i < 8) and (cell[0] + i >= 0) and (cell[1] + j < 8) and (cell[1] + j >= 0):
                     if (cell[0] + i, cell[1] + j) in self.mines:
-                        count -= 1
+                        #count -= 1
+                        print("k")
                     # check if not already used, then add
                     if(cell[0] + i, cell[1] + j) not in self.safes and (cell[0] + i, cell[1] + j) not in self.moves_made:
                         newInfo.cells.add((cell[0] + i, cell[1] + j))
