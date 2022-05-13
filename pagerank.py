@@ -20,6 +20,7 @@ def main():
     for page in sorted(ranks):
         print(f"  {page}: {ranks[page]:.4f}")
 
+
 def crawl(directory):
     """
     Parse a directory of HTML pages and check for links to other pages.
@@ -71,7 +72,6 @@ def transition_model(corpus, page, damping_factor):
     for i in neighbors:
         probzzDict[i] += propProb
 
-
     # get propProb for the 15% random roll; if no links exist this 15% becomes 100%
     randomProb = 0
     if len(neighbors) > 0:
@@ -81,7 +81,7 @@ def transition_model(corpus, page, damping_factor):
     # add prob to all 
     for i in probzzDict:
         # NOTE: i is a key
-       probzzDict[i] += randomProb
+        probzzDict[i] += randomProb
 
     return probzzDict
 
@@ -195,9 +195,6 @@ def iterate_pagerank(corpus, damping_factor):
                     if changeFactor > 0.001:
                         canBreak = False
     return probzzDict
-
-
-
 
 
 if __name__ == "__main__":
