@@ -153,17 +153,16 @@ def joint_probability(people, one_gene, two_genes, have_trait):
                 mother = people[person]["mother"]
                 father = people[person]["father"]
                 
-
                 mom = 1
                 notMom = 1
                 # get prob mother and not mother
                 if mother in two_genes:
                     # add prob that mom gives gene
-                     mom *= 0.99
-                     notMom *= 0.01
+                    mom *= 0.99
+                    notMom *= 0.01
                 elif mother in one_gene:
-                     mom *= .50
-                     notMom *= .50
+                    mom *= .50
+                    notMom *= .50
                 else:
                     # prob that gene from mom mutates
                     mom *= PROBS["mutation"]
@@ -171,18 +170,18 @@ def joint_probability(people, one_gene, two_genes, have_trait):
                 
                 dad = 1
                 notDad = 1
-                #get prob dad and not dad
+                # get prob dad and not dad
                 if father in two_genes:
                    # add prob that mom gives gene
-                     dad *= 0.99
-                     notDad*= 0.01
+                    dad *= 0.99
+                    notDad*= 0.01
                 elif father in one_gene:
-                     dad *= .50
-                     notDad*= .50
+                    dad *= .50
+                    notDad *= .50
                 else:
                     # prob that gene from mom mutates
                     dad *= PROBS["mutation"]
-                    notDad*= .99
+                    notDad *= .99
                 
                 combinedProb = (mom * notDad) + (dad * notMom)
                 # check if person has / has no trait, and factor in that probability to the whole prob for the person case (gene #, hastrait)
@@ -211,9 +210,9 @@ def joint_probability(people, one_gene, two_genes, have_trait):
                 # get prob mother and not mother
                 if mother in two_genes:
                     # add prob that mom gives gene
-                     mom *= 0.99
+                    mom *= 0.99
                 elif mother in one_gene:
-                     mom *= .50
+                    mom *= .50
                 else:
                     # prob that gene from mom mutates
                     mom *= PROBS["mutation"]
@@ -222,9 +221,9 @@ def joint_probability(people, one_gene, two_genes, have_trait):
                 # get prob dad and not dad
                 if father in two_genes:
                     # add prob that mom gives gene
-                     dad *= 0.99
+                    dad *= 0.99
                 elif father in one_gene:
-                     dad *= .50
+                    dad *= .50
                 else:
                     # prob that gene from mom mutates
                     dad *= PROBS["mutation"]
@@ -234,11 +233,11 @@ def joint_probability(people, one_gene, two_genes, have_trait):
                 if person in have_trait:
                     combinedProb *= PROBS["trait"][2][True]
                 else:
-                   combinedProb *= PROBS["trait"][2][False]
-               # add prob
+                    combinedProb *= PROBS["trait"][2][False]
+                # add prob
                 caseProbzz.append(combinedProb)
             else:
-                 # else calculate raw prob
+                # else calculate raw prob
                 if person in have_trait:
                     caseProbzz.append(PROBS["gene"][2] * PROBS["trait"][2][True])
                 else:
@@ -255,9 +254,9 @@ def joint_probability(people, one_gene, two_genes, have_trait):
                 # get prob mother and not mother
                 if mother in two_genes:
                     # add prob that mom gives gene
-                         NotMom *= PROBS["mutation"]
+                    NotMom *= PROBS["mutation"]
                 elif mother in one_gene:
-                        NotMom *= .50
+                    NotMom *= .50
                 else:
                     # prob that gene from mom doesnt mutate
                     NotMom *= 0.99
@@ -268,7 +267,7 @@ def joint_probability(people, one_gene, two_genes, have_trait):
                     # add prob that mom gives gene
                     NotDad *= PROBS["mutation"]
                 elif father in one_gene:
-                    NotDad*= .50
+                    NotDad *= .50
                 else:
                     # prob that gene from dad doesnt mutate
                     NotDad = 0.99
