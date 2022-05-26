@@ -142,58 +142,58 @@ def joint_probability(people, one_gene, two_genes, have_trait):
     """
     caseProbzz = []
     for person in people:
-    # person is a dict KEY!!!
-    # gauge what prob condition to calculate. Essentially, how many genes and yes/no trait are we calculating the prob for
+        # person is a dict KEY!!!
+        # gauge what prob condition to calculate. Essentially, how many genes and yes/no trait are we calculating the prob for
         # one gene condis
         if person in one_gene and have_trait:
 
-            #check if parents
+            # check if parents
             if people[person]["mother"]:
-               # for one gene calc prob af getting from either parent and NOT the other
-               mother = people[person]["mother"]
-               father = people[person]["father"]
+                # for one gene calc prob af getting from either parent and NOT the other
+                mother = people[person]["mother"]
+                father = people[person]["father"]
                 
 
-               mom = 1
-               notMom = 1
-               # get prob mother and not mother
-               if mother in two_genes:
-                   # add prob that mom gives gene
-                    mom *= 0.99
-                    notMom *= 0.01
-               elif mother in one_gene:
-                    mom *= .50
-                    notMom *= .50
-               else:
-                   # prob that gene from mom mutates
-                   mom *= PROBS["mutation"]
-                   notMom *= .99
+                mom = 1
+                notMom = 1
+                # get prob mother and not mother
+                if mother in two_genes:
+                    # add prob that mom gives gene
+                     mom *= 0.99
+                     notMom *= 0.01
+                elif mother in one_gene:
+                     mom *= .50
+                     notMom *= .50
+                else:
+                    # prob that gene from mom mutates
+                    mom *= PROBS["mutation"]
+                    notMom *= .99
                 
-               dad = 1
-               notDad = 1
-               #get prob dad and not dad
-               if father in two_genes:
+                dad = 1
+                notDad = 1
+                #get prob dad and not dad
+                if father in two_genes:
                    # add prob that mom gives gene
-                    dad *= 0.99
-                    notDad*= 0.01
-               elif father in one_gene:
-                    dad *= .50
-                    notDad*= .50
-               else:
-                   # prob that gene from mom mutates
-                   dad *= PROBS["mutation"]
-                   notDad*= .99
+                     dad *= 0.99
+                     notDad*= 0.01
+                elif father in one_gene:
+                     dad *= .50
+                     notDad*= .50
+                else:
+                    # prob that gene from mom mutates
+                    dad *= PROBS["mutation"]
+                    notDad*= .99
                 
-               combinedProb = (mom * notDad) + (dad * notMom)
-               # check if person has / has no trait, and factor in that probability to the whole prob for the person case (gene #, hastrait)
-               if person in have_trait:
-                   combinedProb *= PROBS["trait"][1][True]
-               else:
-                   combinedProb *= PROBS["trait"][1][False]
-               # add prob
-               caseProbzz.append(combinedProb)
+                combinedProb = (mom * notDad) + (dad * notMom)
+                # check if person has / has no trait, and factor in that probability to the whole prob for the person case (gene #, hastrait)
+                if person in have_trait:
+                    combinedProb *= PROBS["trait"][1][True]
+                else:
+                    combinedProb *= PROBS["trait"][1][False]
+                # add prob
+                caseProbzz.append(combinedProb)
             else:
-            # else calculate raw prob
+                # else calculate raw prob
                 if person in have_trait:
                     caseProbzz.append(PROBS["gene"][1] * PROBS["trait"][1][True])
                 else:
@@ -201,44 +201,44 @@ def joint_probability(people, one_gene, two_genes, have_trait):
 
         # two gene condis
         elif person in two_genes:
-             #check if parents
+            # check if parents
             if people[person]["mother"]:
-               # for two gene, calc prob of getting from both parents given
-               mother = people[person]["mother"]
-               father = people[person]["father"]
+                # for two gene, calc prob of getting from both parents given
+                mother = people[person]["mother"]
+                father = people[person]["father"]
                 
-               mom = 1
-               # get prob mother and not mother
-               if mother in two_genes:
-                   # add prob that mom gives gene
-                    mom *= 0.99
-               elif mother in one_gene:
-                    mom *= .50
-               else:
-                   # prob that gene from mom mutates
-                   mom *= PROBS["mutation"]
+                mom = 1
+                # get prob mother and not mother
+                if mother in two_genes:
+                    # add prob that mom gives gene
+                     mom *= 0.99
+                elif mother in one_gene:
+                     mom *= .50
+                else:
+                    # prob that gene from mom mutates
+                    mom *= PROBS["mutation"]
                   
-               dad = 1
-               #get prob dad and not dad
-               if father in two_genes:
-                   # add prob that mom gives gene
-                    dad *= 0.99
-               elif father in one_gene:
-                    dad *= .50
-               else:
-                   # prob that gene from mom mutates
-                   dad *= PROBS["mutation"]
+                dad = 1
+                # get prob dad and not dad
+                if father in two_genes:
+                    # add prob that mom gives gene
+                     dad *= 0.99
+                elif father in one_gene:
+                     dad *= .50
+                else:
+                    # prob that gene from mom mutates
+                    dad *= PROBS["mutation"]
                 
-               combinedProb = dad * mom
-               # check if person has / has no trait, and factor in that probability to the whole prob for the person case (gene #, hastrait)
-               if person in have_trait:
-                   combinedProb *= PROBS["trait"][2][True]
-               else:
+                combinedProb = dad * mom
+                # check if person has / has no trait, and factor in that probability to the whole prob for the person case (gene #, hastrait)
+                if person in have_trait:
+                    combinedProb *= PROBS["trait"][2][True]
+                else:
                    combinedProb *= PROBS["trait"][2][False]
                # add prob
-               caseProbzz.append(combinedProb)
+                caseProbzz.append(combinedProb)
             else:
-            # else calculate raw prob
+                 # else calculate raw prob
                 if person in have_trait:
                     caseProbzz.append(PROBS["gene"][2] * PROBS["trait"][2][True])
                 else:
