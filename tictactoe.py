@@ -131,7 +131,6 @@ def minimax(board):
         # each action index should correspond to a respective pathVal returned, compare the currentGreates number and store the index
         currentGreat = -INFINITE
         index = None
-        print(paths)
         for i in range(len(paths)):
             if paths[i] > currentGreat:
                 currentGreat = paths[i]
