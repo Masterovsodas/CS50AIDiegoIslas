@@ -67,7 +67,7 @@ def load_data(filename):
     labels = []
 
     # special arrays
-    monthArray = ['Jan','Feb','Mar','Apr','May','June','Jul','Aug','Sep','Oct','Nov','Dec']
+    monthArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     for row in dataReader:
         # skip first
         if row[0] == 'Administrative':
