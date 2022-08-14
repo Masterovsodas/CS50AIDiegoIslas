@@ -82,12 +82,12 @@ def load_data(filename):
             counter += 1
             # all data are initially strings
             # if column header wants a float
-            if counter in [1,3,5,6,7,8,9]:
+            if counter in [1, 3, 5, 6, 7, 8, 9]:
                 rowEvidence.append(float(data))
                 continue
 
             # else make it an int, and ask if they are the special ones or label
-            if counter in [10,15,16]:
+            if counter in [10, 15, 16]:
                 # month
                 if counter == 10:
                     rowEvidence.append(monthArray.index(data))
@@ -155,7 +155,7 @@ def evaluate(labels, predictions):
     for real, predicted in zip(labels, predictions):
         if real == 1:
             if real == predicted:
-                cPos +=1
+                cPos += 1
             continue
         # if actually neg
         if real == predicted:
