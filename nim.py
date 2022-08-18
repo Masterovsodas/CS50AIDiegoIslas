@@ -104,7 +104,7 @@ class NimAI():
         """
         convState = tuple(state)
         try:
-            Qval = self.q[convState,action]
+            Qval = self.q[convState, action]
             return Qval
         except:
             return 0
@@ -150,7 +150,7 @@ class NimAI():
         for pile in state:
             pileTracker += 1
             # for number in numbers left
-            for num in range(1,pile + 1):
+            for num in range(1, pile + 1):
                 # start with none
                 actionVal = None
 
@@ -194,7 +194,7 @@ class NimAI():
         for pile in state:
             pileTracker += 1
             # for number in numbers left
-            for num in range(1,pile + 1):
+            for num in range(1, pile + 1):
                 # start with none
                 actionVal = None
 
