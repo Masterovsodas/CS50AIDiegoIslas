@@ -168,7 +168,7 @@ class NimAI():
             return 0 
         return currHighest 
         
-    def choose_action(self, state, epsilon=True):
+    def choose_action(self, state, epsilon=False):
         """
         Given a state `state`, return an action `(i, j)` to take.
 
@@ -219,7 +219,7 @@ def train(n):
 
     player = NimAI()
 
-    # Play n games
+    # Play n games (AI STARTS BY PLAYING SORT OF AT RANDOM AGAINST ITSELF)
     for i in range(n):
         print(f"Playing training game {i + 1}")
         game = Nim()
@@ -241,13 +241,15 @@ def train(n):
             last[game.player]["state"] = state
             last[game.player]["action"] = action
 
-            # Make move
+            # Make move, SWAPS GAME.PLAYER
             game.move(action)
             new_state = game.piles.copy()
 
             # When game is over, update Q values with rewards
             if game.winner is not None:
+                # punish board clearing action
                 player.update(state, action, new_state, -1)
+                # reward prior action that lead to board clear by the swapped player
                 player.update(
                     last[game.player]["state"],
                     last[game.player]["action"],
@@ -256,7 +258,7 @@ def train(n):
                 )
                 break
 
-            # If game is continuing, no rewards yet
+            # If game is continuing, no rewards yet (requires given player to have at least made one move)
             elif last[game.player]["state"] is not None:
                 player.update(
                     last[game.player]["state"],
