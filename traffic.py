@@ -90,24 +90,24 @@ def get_model():
 
         # add a convolution layer where many filters are calculated
         tf.keras.layers.Conv2D(
-            32, (3,3), activation="relu", input_shape=(30,30,3)
+            32, (3, 3), activation="relu", input_shape=(30, 30, 3)
         ),
-
-         # add a convolution layer where many filters are calculated
-        tf.keras.layers.Conv2D(
-            32, (3,3), activation="relu", input_shape=(30,30,3)
-        ),
-
-        # do pooling
-        tf.keras.layers.MaxPooling2D(pool_size=(2,2)),
 
         # add a convolution layer where many filters are calculated
         tf.keras.layers.Conv2D(
-            96, (4,4), activation="relu", input_shape=(30,30,3)
+            32, (3, 3), activation="relu", input_shape=(30, 30, 3)
         ),
 
         # do pooling
-        tf.keras.layers.MaxPooling2D(pool_size=(2,2)),
+        tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+
+        # add a convolution layer where many filters are calculated
+        tf.keras.layers.Conv2D(
+            96, (4, 4), activation="relu", input_shape=(30, 30, 3)
+        ),
+
+        # do pooling
+        tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
 
         # flatten values to general neural network inputs
         tf.keras.layers.Flatten(),
