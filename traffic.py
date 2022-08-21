@@ -68,10 +68,10 @@ def load_data(data_dir):
         
         for image in os.listdir(os.path.join(data_dir, filename)):
             # read image
-            img = cv2.imread(os.path.join(os.path.join(data_dir, filename),image))
+            img = cv2.imread(os.path.join(os.path.join(data_dir, filename), image))
 
             # resize image
-            newImg = cv2.resize(img, dsize=(30,30), interpolation=cv2.INTER_CUBIC)
+            newImg = cv2.resize(img, dsize=(30, 30), interpolation=cv2.INTER_CUBIC)
 
             # add img to array
             images.append(newImg)
