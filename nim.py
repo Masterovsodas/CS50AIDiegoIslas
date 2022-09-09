@@ -1,8 +1,6 @@
-from asyncio.windows_events import INFINITE
 import math
 import random
 import time
-
 
 class Nim():
 
@@ -141,7 +139,7 @@ class NimAI():
         `state`, return 0.
         """
         tupeState = tuple(state)
-        currHighest = -INFINITE
+        currHighest = -math.inf
         
         # consider all possible actions. All possible = combine all piles, with all possible takes for said pile
         # track what pile is being looked at
@@ -164,7 +162,7 @@ class NimAI():
                 if actionVal > currHighest:
                     currHighest = actionVal
         # if no actions possible
-        if currHighest == -INFINITE:
+        if currHighest == -math.inf:
             return 0 
         return currHighest 
         
@@ -184,7 +182,7 @@ class NimAI():
         options is an acceptable return value.
         """
         tupeState = tuple(state)
-        currHighest = -INFINITE
+        currHighest = -math.inf
         currAction = None
 
         # consider all possible actions. All possible = combine all piles, with all possible takes for said pile
@@ -241,15 +239,13 @@ def train(n):
             last[game.player]["state"] = state
             last[game.player]["action"] = action
 
-            # Make move, SWAPS GAME.PLAYER
+            # Make move
             game.move(action)
             new_state = game.piles.copy()
 
             # When game is over, update Q values with rewards
             if game.winner is not None:
-                # punish board clearing action
                 player.update(state, action, new_state, -1)
-                # reward prior action that lead to board clear by the swapped player
                 player.update(
                     last[game.player]["state"],
                     last[game.player]["action"],
@@ -258,7 +254,7 @@ def train(n):
                 )
                 break
 
-            # If game is continuing, no rewards yet (requires given player to have at least made one move)
+            # If game is continuing, no rewards yet 
             elif last[game.player]["state"] is not None:
                 player.update(
                     last[game.player]["state"],
